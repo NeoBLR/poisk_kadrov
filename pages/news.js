@@ -6,19 +6,19 @@ import NavBar from '../components/NavBar'
 import Path from '../components/path'
 import styles from '../styles/Home.module.scss'
 
-export default function Home() {
+export default function News() {
   return (
     <layout>
       <NavBar />
 
       <Center h='100vh'>
         <Heading>
-          <Heading>Content</Heading>
+          <Path />
         </Heading>
       </Center>
 
       <Center h='100vh'>
-        <Heading fontWeight='black'>Content</Heading>
+        <Heading>Content</Heading>
       </Center>
 
       <Center h='100vh'>

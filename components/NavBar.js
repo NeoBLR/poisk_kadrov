@@ -9,6 +9,7 @@ import {
   useDisclosure,
   IconButton,
 } from '@chakra-ui/react'
+import { AnimatePresence, motion } from 'framer-motion'
 import ColorModeButton from './ColorModeButton'
 // import HamburgerButton from './HamburgerButton'
 
@@ -25,10 +26,10 @@ export default function NavBar() {
 
   let ItemMenu = () => (
     <>
-      <Heading w='100%' textAlign='center'>
+      <Heading fontWeight='light' w='100%' textAlign='center'>
         Item Menu 1
       </Heading>
-      <Heading w='100%' textAlign='center'>
+      <Heading fontWeight='light' w='100%' textAlign='center'>
         Item Menu 1
       </Heading>
     </>
@@ -36,14 +37,15 @@ export default function NavBar() {
 
   return (
     <Box
+      backdropFilter='blur(1rem);'
       position='fixed'
       w='100%'
       data-scroll
       data-scroll-sticky
       data-scroll-target='body'
-      bg={colorMode === 'light' ? 'gray.200' : 'gray.400'}
+      zIndex='1'
     >
-      <Flex>
+      <Flex bg={colorMode === 'light' ? 'gray.10' : 'gray.900'}>
         <Heading m='.5rem' w='10rem'>
           NavBar
         </Heading>
@@ -66,11 +68,23 @@ export default function NavBar() {
           <ColorModeButton />
         </Center>
       </Flex>
-      {isOpen && (
-        <Stack display={['flex', 'flex', 'none']}>
-          <ItemMenu />
-        </Stack>
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ y: -100 }}
+            animate={{ y: 0 }}
+            exit={{ opacity: 0 }}
+          >
+            <Stack
+              zIndex='-1'
+              bg={colorMode === 'light' ? 'gray.10' : 'gray.900'}
+              display={['flex', 'flex', 'none']}
+            >
+              <ItemMenu />
+            </Stack>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </Box>
   )
 }

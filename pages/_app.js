@@ -3,6 +3,8 @@ import '../styles/globals.scss'
 
 import { useRef, useEffect } from 'react'
 
+import { DefaultTheme } from '../styles/theme'
+
 function MyApp({ Component, pageProps }) {
   const scrollRef = useRef()
 
@@ -28,7 +30,7 @@ function MyApp({ Component, pageProps }) {
   }, [])
   return (
     <div ref={scrollRef}>
-      <ChakraProvider>
+      <ChakraProvider theme={DefaultTheme}>
         <Component {...pageProps} />
       </ChakraProvider>
     </div>
