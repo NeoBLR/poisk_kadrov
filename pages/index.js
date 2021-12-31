@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import layout from '../components/layout'
 import NavBar from '../components/NavBar'
-import Path from '../components/path'
+import Path from '../components/Path'
 import styles from '../styles/Home.module.scss'
 
 export default function Home() {
