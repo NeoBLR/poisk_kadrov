@@ -8,8 +8,11 @@ import {
   Stack,
   useDisclosure,
   IconButton,
+  Button,
 } from '@chakra-ui/react'
 import { AnimatePresence, motion } from 'framer-motion'
+import Link from 'next/link'
+// import Link from 'next/link'
 import ColorModeButton from './ColorModeButton'
 // import HamburgerButton from './HamburgerButton'
 
@@ -26,9 +29,11 @@ export default function NavBar() {
 
   let ItemMenu = () => (
     <>
-      <Heading fontWeight='light' w='100%' textAlign='center'>
-        Item Menu 1
-      </Heading>
+      <Link passHref href='/news'>
+        <Heading fontWeight='light' w='100%' textAlign='center'>
+          News
+        </Heading>
+      </Link>
       <Heading fontWeight='light' w='100%' textAlign='center'>
         Item Menu 1
       </Heading>
@@ -47,7 +52,7 @@ export default function NavBar() {
     >
       <Flex bg={colorMode === 'light' ? 'gray.10' : 'gray.900'}>
         <Heading m='.5rem' w='10rem'>
-          NavBar
+          <a href='/'>NavBar</a>
         </Heading>
 
         <Box m='.5rem' display={['none', 'none', 'flex']} flex='1'>

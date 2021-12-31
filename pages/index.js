@@ -9,6 +9,10 @@ import styles from '../styles/Home.module.scss'
 export default function Home() {
   return (
     <layout>
+      <Head>
+        <title>Главная</title>
+      </Head>
+
       <NavBar />
 
       <Center h='100vh'>
