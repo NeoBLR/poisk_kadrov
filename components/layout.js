@@ -1,5 +1,5 @@
 import { Box, Flex } from '@chakra-ui/react'
-import NavBar from '../components/NavBar'
+import NavBar from './NavBar'
 
 export default function Layout({ children }) {
   return (
