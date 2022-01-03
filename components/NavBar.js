@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-html-link-for-pages */
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 import {
   Flex,
@@ -12,7 +11,9 @@ import {
   Button,
 } from '@chakra-ui/react'
 import { AnimatePresence, motion } from 'framer-motion'
-import Link from 'next/link'
+
+import ChakraNextLink from './ChakraNextLink'
+
 // import Link from 'next/link'
 import ColorModeButton from './ColorModeButton'
 // import HamburgerButton from './HamburgerButton'
@@ -30,11 +31,11 @@ export default function NavBar() {
 
   let ItemMenu = () => (
     <>
-      <Link passHref href='/news'>
-        <Heading fontWeight='light' w='100%' textAlign='center'>
+      <ChakraNextLink w='100%' href='/news' variant='link'>
+        <Heading fontWeight='light' textAlign='center'>
           News
         </Heading>
-      </Link>
+      </ChakraNextLink>
       <Heading fontWeight='light' w='100%' textAlign='center'>
         Item Menu 1
       </Heading>
@@ -52,9 +53,9 @@ export default function NavBar() {
       zIndex='1'
     >
       <Flex bg={colorMode === 'light' ? 'gray.10' : 'gray.900'}>
-        <Heading m='.5rem' w='10rem'>
-          <a href='/'>NavBar</a>
-        </Heading>
+        <ChakraNextLink m='.5rem' w='10rem' href='/' variant='link'>
+          <Heading>NavBar</Heading>
+        </ChakraNextLink>
 
         <Box m='.5rem' display={['none', 'none', 'flex']} flex='1'>
           <ItemMenu />
@@ -70,10 +71,19 @@ export default function NavBar() {
           <HamburgerButton />
         </Center>
 
+        <Center
+          display={['flex', 'flex', 'none']}
+          justifyContent='flex-end'
+          m='.5rem'
+        >
+          <HamburgerButton />
+        </Center>
+
         <Center justifyContent='flex-end' m='.5rem'>
           <ColorModeButton />
         </Center>
       </Flex>
+
       <AnimatePresence>
         {isOpen && (
           <motion.div

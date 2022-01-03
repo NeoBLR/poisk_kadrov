@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }) {
 
     const scroll = import('locomotive-scroll').then((LocomotiveScroll) => {
       new LocomotiveScroll.default({
-        el: scrollRef.current,
+        el: document.querySelector('.app'),
         smooth: true,
         mobile: {
           smooth: true,

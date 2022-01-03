@@ -1,14 +1,14 @@
 import { Center, Heading } from '@chakra-ui/react'
 import Head from 'next/head'
 import Image from 'next/image'
-import layout from '../components/layout'
+import Layout from '../components/layout'
 import NavBar from '../components/NavBar'
-import Path from '../components/path'
+import Path from '../components/Path'
 import styles from '../styles/Home.module.scss'
 
 export default function News() {
   return (
-    <layout>
+    <Layout>
       <NavBar />
 
       <Center h='100vh'>
@@ -24,6 +24,6 @@ export default function News() {
       <Center h='100vh'>
         <Heading>Content</Heading>
       </Center>
-    </layout>
+    </Layout>
   )
 }
