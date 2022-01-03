@@ -40,6 +40,7 @@ import {
 } from 'react-icons/fi'
 
 import ChakraNextLink from './ChakraNextLink'
+import ChakraNextLinkButton from './ChakraNextLinkButton'
 
 // import Link from 'next/link'
 import ColorModeButton from './ColorModeButton'
@@ -52,11 +53,9 @@ import Hamburger01 from '../components/Hamburger01'
 export default function NavBar() {
   const { colorMode } = useColorMode()
   const { isOpen, onToggle } = useDisclosure()
-  const [Auth, SetAuth] = useState(0)
+  const [Auth, SetAuth] = useState(false)
 
-  let HamburgerButton = () => (
-    <Hamburger01 isOpen={isOpen} onToggle={onToggle} />
-  )
+  let HamburgerButton = () => <Hamburger01 isOpen={isOpen} />
 
   let ItemMenu = () => (
     <>
@@ -103,58 +102,69 @@ export default function NavBar() {
           display={['flex', 'flex', 'none']}
           justifyContent='flex-end'
           m='auto'
-          mr={2}
         >
           <HamburgerButton />
         </Center>
 
-        <Center m='auto'>
-          <Menu>
-            <MenuButton
-              pr={3}
-              transition='all 0.3s'
-              _focus={{ boxShadow: 'none' }}
+        {Auth ? (
+          <Center m='auto'>
+            <Menu>
+              <MenuButton
+                pr={3}
+                transition='all 0.3s'
+                _focus={{ boxShadow: 'none' }}
+              >
+                <HStack>
+                  <Avatar
+                    size={'sm'}
+                    src={
+                      'https://mangalib.me/uploads/users/287021/jAzvAgwFed0u.gif'
+                    }
+                  />
+                  <VStack
+                    display={{ base: 'none', md: 'flex' }}
+                    alignItems='flex-start'
+                    spacing='1px'
+                    ml='2'
+                  >
+                    <Text fontSize='sm'>Henry Markov</Text>
+                    <Text fontSize='xs' color='gray.600'>
+                      Admin
+                    </Text>
+                  </VStack>
+                  <Box display={{ base: 'none', md: 'flex' }}>
+                    <FiChevronDown />
+                  </Box>
+                </HStack>
+              </MenuButton>
+
+              <MenuList>
+                <MenuItem>Профиль</MenuItem>
+                <MenuItem>Настройки</MenuItem>
+
+                <MenuItem>Выйти</MenuItem>
+                <MenuDivider />
+                <Stack>
+                  <ColorModeButton />
+                </Stack>
+              </MenuList>
+            </Menu>
+          </Center>
+        ) : (
+          <>
+            <Center justifyContent='flex-end' m='auto' mr={3}>
+              <ColorModeButton />
+            </Center>
+            <ChakraNextLinkButton
+              colorScheme='teal'
+              m='auto'
+              mr={3}
+              href='/login'
             >
-              <HStack>
-                <Avatar
-                  size={'sm'}
-                  src={
-                    'https://mangalib.me/uploads/users/287021/jAzvAgwFed0u.gif'
-                  }
-                />
-                <VStack
-                  display={{ base: 'none', md: 'flex' }}
-                  alignItems='flex-start'
-                  spacing='1px'
-                  ml='2'
-                >
-                  <Text fontSize='sm'>Henry Markov</Text>
-                  <Text fontSize='xs' color='gray.600'>
-                    Admin
-                  </Text>
-                </VStack>
-                <Box display={{ base: 'none', md: 'flex' }}>
-                  <FiChevronDown />
-                </Box>
-              </HStack>
-            </MenuButton>
-
-            <MenuList>
-              <MenuItem>Профиль</MenuItem>
-              <MenuItem>Настройки</MenuItem>
-
-              <MenuItem>Выйти</MenuItem>
-              <MenuDivider />
-              <Stack>
-                <ColorModeButton />
-              </Stack>
-            </MenuList>
-          </Menu>
-        </Center>
-
-        {/* <Center justifyContent="flex-end" m=".5rem">
-          <ColorModeButton />
-        </Center> */}
+              Войдите
+            </ChakraNextLinkButton>
+          </>
+        )}
       </Flex>
 
       <AnimatePresence>

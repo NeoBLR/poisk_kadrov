@@ -13,7 +13,7 @@ const path02Variants = {
   closed: { d: 'M0 14.5L15 14.5' },
 }
 
-let Hamburger01 = ({ onToggle }) => {
+let Hamburger01 = () => {
   const [isOpen, setOpen] = useState(false)
   const path01Controls = useAnimation()
   const path02Controls = useAnimation()
