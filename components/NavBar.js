@@ -71,12 +71,19 @@ export default function NavBar() {
           <HamburgerButton />
         </Center>
 
-        <Center
-          display={['flex', 'flex', 'none']}
-          justifyContent='flex-end'
-          m='.5rem'
-        >
-          <HamburgerButton />
+        <Center m='.5rem'>
+          <Menu>
+            <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+              Actions
+            </MenuButton>
+            <MenuList>
+              <MenuItem>Download</MenuItem>
+              <MenuItem>Create a Copy</MenuItem>
+              <MenuItem>Mark as Draft</MenuItem>
+              <MenuItem>Delete</MenuItem>
+              <MenuItem>Attend a Workshop</MenuItem>
+            </MenuList>
+          </Menu>
         </Center>
 
         <Center justifyContent='flex-end' m='.5rem'>
